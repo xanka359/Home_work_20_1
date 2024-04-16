@@ -2,11 +2,12 @@ import allure
 import pytest
 import allure_commons
 from appium.options.android import UiAutomator2Options
+from dotenv import load_dotenv
 from selene import browser, support
 import os
 
 import config
-from selene_in_action import utils
+from selene_in_action.utils import allure_attachment
 
 from appium import webdriver
 
@@ -51,13 +52,13 @@ def mobile_management():
     allure.attach(
         browser.driver.get_screenshot_as_png(),
         name='screenshot',
-        attachment_type=allure.attachment_type.PNG,
+        attachment_type=allure.attachment_type.PNG, # это нужно привести к виду как с видео!
     )
 
     allure.attach(
         browser.driver.page_source,
         name='screen xml dump',
-        attachment_type=allure.attachment_type.XML,
+        attachment_type=allure.attachment_type.XML,  # это нужно привести к виду как с видео!
     )
 
     session_id = browser.driver.session_id
@@ -65,4 +66,4 @@ def mobile_management():
     with allure.step('tear down app session'):
         browser.quit()
 
-    utils.allure_attachment.attach_bstack_video(session_id)
+    allure_attachment.attach_bstack_video(session_id)

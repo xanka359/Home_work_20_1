@@ -1,5 +1,7 @@
 # User-specific stuff
 # ...
+# Allure
+tests/allure-results
 
 # JetBrains
 .idea/
@@ -7,6 +9,7 @@
 
 # MacOS
 .DS_Store
+allure-results
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -29,3 +32,5 @@ __pycache__/
 # Environments
 .venv*
 venv*/
+/.env
+/tests/reports/
