@@ -2,7 +2,6 @@ import allure
 import pytest
 import allure_commons
 from appium.options.android import UiAutomator2Options
-from dotenv import load_dotenv
 from selene import browser, support
 import os
 
@@ -35,9 +34,6 @@ def mobile_management():
         }
     })
 
-    # browser.config.driver_remote_url = 'http://hub.browserstack.com/wd/hub'
-    # browser.config.driver_options = options
-
     with allure.step('init app session'):
         browser.config.driver = webdriver.Remote("http://hub.browserstack.com/wd/hub", options=options)
 
@@ -52,13 +48,13 @@ def mobile_management():
     allure.attach(
         browser.driver.get_screenshot_as_png(),
         name='screenshot',
-        attachment_type=allure.attachment_type.PNG, # это нужно привести к виду как с видео!
+        attachment_type=allure.attachment_type.PNG, # оно и так в виде как на видео!
     )
 
     allure.attach(
         browser.driver.page_source,
         name='screen xml dump',
-        attachment_type=allure.attachment_type.XML,  # это нужно привести к виду как с видео!
+        attachment_type=allure.attachment_type.XML,  # оно и так в виде как на видео!
     )
 
     session_id = browser.driver.session_id
