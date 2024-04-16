@@ -1,7 +1,8 @@
 pytest~=8.0.0
-allure-pytest
+allure-pytest~=2.13.5
 selene>=2.0.0rc9
-python-dotenv
+python-dotenv~=1.0.1
 config~=0.5.1
 Appium-Python-Client~=4.0.0
 requests~=2.31.0
+selenium>=4.19.0

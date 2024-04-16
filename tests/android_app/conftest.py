@@ -48,13 +48,13 @@ def mobile_management():
     allure.attach(
         browser.driver.get_screenshot_as_png(),
         name='screenshot',
-        attachment_type=allure.attachment_type.PNG, # оно и так в виде как на видео!
+        attachment_type=allure.attachment_type.PNG,
     )
 
     allure.attach(
         browser.driver.page_source,
         name='screen xml dump',
-        attachment_type=allure.attachment_type.XML,  # оно и так в виде как на видео!
+        attachment_type=allure.attachment_type.XML,
     )
 
     session_id = browser.driver.session_id
