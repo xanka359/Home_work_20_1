@@ -13,29 +13,10 @@ from appium import webdriver
 
 @pytest.fixture(scope='function', autouse=True)
 def mobile_management():
-    options = UiAutomator2Options().load_capabilities({
-        # Specify device and os_version for testing
-        'platformName': 'android',
-        'platformVersion': '9.0',
-        'deviceName': 'Google Pixel 3',
-
-        # Set URL of the application under test
-        'app': 'bs://sample.app',
-
-        # Set other BrowserStack capabilities
-        'bstack:options': {
-            'projectName': 'First Python project',
-            'buildName': 'browserstack-build-1',
-            'sessionName': 'BStack first_test',
-
-            # Set your access credentials
-            'userName': config.bstack_userName,
-            'accessKey': config.bstack_accessKey,
-        }
-    })
-
     with allure.step('init app session'):
-        browser.config.driver = webdriver.Remote("http://hub.browserstack.com/wd/hub", options=options)
+        browser.config.driver = webdriver.Remote(
+            config.remote_url,
+            options=config.to_driver_options())
 
     browser.config.timeout = float(os.getenv('timeout', '10.0'))
 
@@ -62,4 +43,5 @@ def mobile_management():
     with allure.step('tear down app session'):
         browser.quit()
 
-    allure_attachment.attach_bstack_video(session_id)
+    if config.runs_on_bstack:
+        allure_attachment.attach_bstack_video(session_id)
