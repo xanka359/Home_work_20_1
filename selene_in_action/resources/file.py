@@ -1,11 +1,7 @@
-import selene_in_action
 from pathlib import Path
 
 
-def abs_path_from_project(relative_path: str):
-    return (
-        Path(selene_in_action.__file__)
-        .parent.parent.joinpath(relative_path)
-        .absolute()
-        .__str__()
-    )
+def path(apk):
+    return Path(__file__).parent.parent.parent.joinpath(apk).absolute().__str__()
+
+print(path('.env.bstack'))

@@ -3,7 +3,7 @@ import pytest
 from dotenv import load_dotenv
 from selene import browser
 
-import config
+
 from selene_in_action.resources import allure_attachment
 
 from appium import webdriver
@@ -12,7 +12,7 @@ from appium import webdriver
 def pytest_addoption(parser):
     parser.addoption(
         "--context",
-        default="local_real",
+        default="bstack",
         help="Specify the test context"
     )
 
@@ -31,12 +31,13 @@ def context(request):
 
 @pytest.fixture(scope='function', autouse=True)
 def mobile_management(context):
-    #with allure.step('init app session'):
+    import config
+    # with allure.step('init app session'):
     options = config.to_driver_options(context=context)
     browser.config.driver = webdriver.Remote(options.get_capability('remote_url'),
-        options=options)
+                                             options=options)
 
-    browser.config.timeout = '10.0'
+    browser.config.timeout = 10.0
 
     # browser.config._wait_decorator = support._logging.wait_with(
     #     context=allure_commons._allure.StepContext
