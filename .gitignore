@@ -32,6 +32,9 @@ __pycache__/
 # Environments
 .venv*
 venv*/
-/.env
+/.env.bstack
 /tests/reports/
 *.apk
+/.env.bstack
+/.env.local_real
+/.env.local_emulator
