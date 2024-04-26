@@ -25,7 +25,8 @@ class Config:
             options.set_capability('remote_url', self.remote_url)
             options.set_capability('appWaitActivity', self.app_wait_activity)
             options.set_capability('udid', self.udid)
-            options.set_capability('app', self.app)
+            options.set_capability('app', file.path(self.app))
+            print(self.app)
 
         if context == 'local_real':
             options.set_capability('remote_url', self.remote_url)

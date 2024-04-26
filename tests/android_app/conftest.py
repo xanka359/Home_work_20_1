@@ -29,7 +29,7 @@ def context(request):
 
 @pytest.fixture(scope='function', autouse=True)
 def mobile_management(context):
-    from  config import config_app
+    from config import config_app
     # with allure.step('init app session'):
     options = config_app.to_driver_options(context=context)
     browser.config.driver = webdriver.Remote(options.get_capability('remote_url'),
