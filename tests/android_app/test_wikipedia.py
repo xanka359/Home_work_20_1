@@ -16,7 +16,6 @@ def test_search_for_Appium():
         results.should(have.size_greater_than(0))
         results.first.should(have.text('Appium'))
 
-
 def test_search_for_OpenAI():
     with allure.step('Click "Skip" button'):
         browser.element((AppiumBy.ID, 'org.wikipedia.alpha:id/fragment_onboarding_skip_button')).click()

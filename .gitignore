@@ -35,6 +35,5 @@ venv*/
 /.env.bstack
 /tests/reports/
 *.apk
-/.env.bstack
 /.env.local_real
 /.env.local_emulator
